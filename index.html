@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOLK</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 72px;
+            text-transform: uppercase;
+            margin: 0;
+            color: #000000;
+            cursor: pointer;
+        }
+
+        /* GIF fluttuante nascosta di default */
+        #cursor-gif {
+            position: fixed;
+            pointer-events: none; /* Impedisce alla GIF di interferire con il mouse */
+            display: none;
+            z-index: 9999;
+            transform: translate(15px, 15px); /* Offset per non coprire direttamente la punta del cursore */
+            max-width: 150px; /* Può essere modificato in base alla dimensione desiderata */
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="folk-text">FOLK</h1>
+    <img id="cursor-gif" src="img/200w.gif" alt="Preview GIF">
+
+    <script>
+        const folkText = document.getElementById('folk-text');
+        const cursorGif = document.getElementById('cursor-gif');
+
+        folkText.addEventListener('mouseenter', () => {
+            cursorGif.style.display = 'block';
+        });
+
+        folkText.addEventListener('mousemove', (e) => {
+            cursorGif.style.left = e.clientX + 'px';
+            cursorGif.style.top = e.clientY + 'px';
+        });
+
+        folkText.addEventListener('mouseleave', () => {
+            cursorGif.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
